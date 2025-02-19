@@ -2,11 +2,58 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一個 GitHub Pages 網站</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #d89bd5;
+            }
+            h1{
+                color : rgb(175, 115, 232);
+                font-size: 100px;
+                text-align: center;
+            }
+            button{
+                background-color: #81da84;
+                border: none;
+                color: white;
+                padding: 30px 30px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+    </style>
 </head>
 <body>
-    <h1>歡迎來到我的網站！</h1>
-    <p>這是我的第一個 GitHub Pages 部署的網站。</p>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        
+        <button @click="changeMessage">點我改變訊息</button>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    message: "Hello Vue!"
+                };
+            },
+            methods: {
+                changeMessage() {
+                    this.message = "訊息已改變！";
+                }
+            }
+        }).mount("#app");
+    </script>
 </body>
 </html>
